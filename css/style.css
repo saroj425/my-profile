@@ -33,6 +33,7 @@ body{
     min-height: 100vh;
     background: var(--bg-color);
     color: var(--text-color);
+    overflow: hidden;
 }
 .wrapper{
     position: relative;
@@ -40,8 +41,21 @@ body{
     height: 70rem;
     padding: 2rem;
     /* background: red; */
+    perspective: 300rem;
     z-index: 1;
+    animation: show-animate 2s forwards;
 }
+ @keyframes show-animate{
+    0%,30%{
+        opacity: 0;
+        transform: rotate(-20deg);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+ }
+
 .cover{
     position: absolute;
     top: 0;
@@ -55,8 +69,11 @@ body{
     transform-origin: right;
 }
 .cover.cover-left{
-    z-index: 1;
+    z-index: -1;
 }
+/* .cover.cover-right{
+    z-index: 100 ;
+} */
 .cover.cover-right.turn{
     transform: rotateY(180deg);
 }
@@ -64,8 +81,8 @@ body{
     position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
-    z-index: 1;
+    display: flex;    
+    perspective: 250rem;
 }
 .book .book-page{
     position: absolute;
@@ -74,6 +91,9 @@ body{
     background: var(--page-color);
     box-shadow: 0 0 0 .6rem rgba(0,0,0, .1);   
     padding: 3rem;
+}
+.book-page.page-left{
+    box-shadow: -.6rem .6rem .6rem rgba(0,0,0,.1);
 }
 .profile-page{
     display: flex;
@@ -164,6 +184,7 @@ body{
     right: 0;
     transform-style: preserve-3d;
     transform-origin: left;
+    transition: transform 1s cubic-bezier(.645,.045,.355,.1);
 }
 .book-page.page-right.turn{
     transform: rotateY(180deg);
@@ -297,4 +318,143 @@ body{
 .services-content .btn{
     width: 11rem;
     height:3.5rem;
+}
+.skills-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.skills-box .skkills-content{
+    flex: 1 1 20rem;
+}
+.skkills-content h3{
+    font-size: 1.6rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+.skkills-content .content{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.skkills-content .content span{
+    display: inline-flex;
+    flex-direction: column;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 5rem;
+    border: var(--border);
+    border-radius: .5rem;
+}
+.portfolio-box .image-box{
+    display: flex;
+    width: 100%;
+    height: 20rem;
+    /* background: red; */
+    border: var(--border);
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+.portfolio-box .image-box img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.8rem;
+    transition: 0.5s ease;
+}
+.portfolio-box .image-box:hover img{
+    transform: scale(1.2);
+}
+.portfolio-box .info-box{
+    margin: 1.2rem 0 1.8rem;
+}
+.portfolio-box .info-box .info-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.portfolio-box .info-box .info-title h3{
+    font-size: 1.8rem;
+}
+.portfolio-box .info-box .info-title a{
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    color: var(--main-color);
+}
+.portfolio-box .info-box .info-title a i{
+    margin-left: 0.6rem;
+}
+.portfolio-box .info-box p:nth-of-type(1){
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+.portfolio-box .info-box p:nth-of-type(2){
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+.portfolio-box .btn-box{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.contact-box{
+    text-align: center;
+}
+.contact-box .field{
+    width: 100%;
+    background: transparent;
+    border: var(--border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-top: 1.5rem;
+
+}
+.contact-box .field::placeholder{
+    color: var(--text-color);
+}
+.contact-box textarea{
+    resize: none;
+    height: 20rem;
+    margin-bottom: 2rem;
+}
+.back-profile{
+    position: absolute;
+    bottom: 1.8rem;
+    right: 2rem;
+    border: var(--border);
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    color: var(--main-color);
+    width: 3rem;
+    height: 3rem;
+    background: transparent;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+.back-profile:hover{
+    background: var(--main-color);
+    color: var(--text-color);
+}
+.back-profile p{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    color: var(--main-color);
+    transform: translate(-50%) scale(.8);
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: .5s;
+}
+.back-profile:hover p{
+    opacity: 1;
+    transform: translate(-50%) scale(1);
+    top: -2rem;
 }
