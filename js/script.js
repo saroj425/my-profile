@@ -95,3 +95,37 @@ let pageNo = 0;
         },500)
     },(index + 1)* 200 + 2100)
 })
+
+///////////////////Send Email ===========================
+
+function SendMail(){
+    //console.log("Function Called")
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let contact = document.getElementById("contact").value;
+    let subj = document.getElementById("subject").value;
+    let message = document.getElementById("message").value;
+    //console.log("Name,Email,Contact,Message",name,email,contact,message);
+    var body = "Name:" + name + "<br/> Email:" + email + "<br/> Contact:" + contact + "<br/> Message:" +message;
+    //console.log("bodybodybodybody",body);
+    Email.send({
+        SecureToken :"66203cec-c962-4ac0-9282-a467ea7d845d",
+        // Host : "smtp.elasticemail.com",
+        // Username : "saroj425@gmail.com",
+        // Password : "638484A9A5EFD7C9A2A0EFB8456368A47208",
+        To : 'saroj425@gmail.com',
+        From : "saroj425@gmail.com",
+        // Subject:"test",
+        // Body:"Body Message"
+        Subject : subj,
+        Body : body
+    }).then(
+      message => {
+        if(message =="OK"){
+            swal("Successfull", "Your data successfully received", "success");
+        }else{
+            swal("Sometihing went wrong", "Your data not received", "error");
+        }
+      }
+    );
+}

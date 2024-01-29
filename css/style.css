@@ -458,3 +458,6 @@ body{
     transform: translate(-50%) scale(1);
     top: -2rem;
 }
+.contact-box .btn{
+    cursor: pointer;
+}

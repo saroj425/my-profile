@@ -233,10 +233,12 @@
                     <h1 class="title">Contact Me !</h1>
                     <div class="contact-box">
                         <form action="#">
-                            <input type="text" class="field" placeholder="Full Name" required>
-                            <input type="email" class="field" placeholder="Email Address" required>
-                            <textarea class="field" name="" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
-                            <input type="submit" class="btn" value="Send Message">
+                            <input type="text" id="name" class="field" placeholder="Full Name" >
+                            <input type="email" id="email" class="field" placeholder="Email Address" >
+                            <input type="text" id="contact" class="field" placeholder="Contact Number" >
+                            <input type="text" id="subject" class="field" placeholder="Subject" >
+                            <textarea class="field" name="" id="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                            <input type="button" class="btn" value="Send Message" onclick="SendMail()">
                         </form>
                     </div>
                     <span class="page-number">6</span>
@@ -252,7 +254,8 @@
             <!--Page 5 and page 6============================-->
         </div>
     </div>
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
